@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<meta charset="utf-8">
+<title>Inicio</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+	crossorigin="anonymous">
+	<style>
+		html {
+			box-sizing: border-box;
+			font-size: 16px;
+		}
+
+		*,
+		*:before,
+		*:after {
+			box-sizing: inherit;
+		}
+
+		body,
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6,
+		p,
+		ol,
+		ul {
+			margin: 0;
+			padding: 0;
+			font-weight: normal;
+		}
+
+		ol,
+		ul {
+			list-style: none;
+		}
+
+		img {
+			max-width: 100%;
+			height: auto;
+		}
+
+		a:hover {
+			text-decoration: none;
+
+		}
+
+		a:hover {
+			color: #000;
+			color: rgb(251,187,1);
+			cursor: pointer;
+		}
+
+		/* typography.css */
+
+		p {
+			font-size: 1.3 rem;
+			letter-spacing: 0.02rem;
+		}
+
+		body{
+			/* background-color: rgb(252,183,27); */
+			/* background-image: url(https://economiasustentable.com/wp-content/uploads/2020/02/subte-1024x694.jpg); */
+			background-size: cover;
+			width: 100%;
+			font-family: 'Roboto', sans-serif;
+			background-color: rgb(251,187,1);
+		}
+
+		h1{
+			margin: 3rem 0;
+		}
+
+		.btn{
+			margin: 1.5rem 0;
+		}
+
+		.table{
+			margin: 1.5rem 0;
+		}
+
+		td{
+			background-color:rgb(98,92,92);
+			color:rgb(254,254,254);
+		}
+	</style>
+
+</head>
+<body>
+
+
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#" th:href="@{/}">Registro y
+					inicio de sesión</a>
+			</div>
+			<div id="navbar" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Cerrar
+							sesión</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<br>
+	<br>
+
+	<div class="container">
+		<div class="row">
+			<h1>Lista de empleados</h1>
+		</div>
+		<div class="row">
+			<div class="col-lg-3">
+				<a th:href="@{/empleados/nuevo}" class="btn btn-primary btn-sm mb3">Agregar llegada</a>
+			</div>
+		</div>
+		<table class="table table-striped table-bordered">
+			<thead class="table-dark">
+			<tr>
+				<th>Nombre</th>
+				<th>Apellido</th>
+				<th>Horario de entrada</th>
+				<th>Horario de salida</th>
+<!--				<th>Opciones</th>-->
+			</tr>
+			</thead>
+			<tbody>
+			<tr th:each="empleado : ${empl}">
+				<td th:text="${empleado.nombre}">Nombre</td>
+				<td th:text="${empleado.apellido}">Apellido</td>
+				<td th:text="${empleado.horarioEntrada}">Horario de entrada</td>
+				<td th:text="${empleado.horarioSalida}">Horario de salida</td>
+<!--				<td>-->
+<!--					<a th:href="@{/empleados/editar/{id}(id=${empleado.id})}" class="btn btn-info"> Editar</a>-->
+<!--					<a th:href="@{/empleados/{id}(id=${empleado.id})}" class="btn btn-danger"> Eliminar</a>-->
+
+<!--				</td>-->
+			</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+		crossorigin="anonymous"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
